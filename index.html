@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #ffeef4; /* light pink */
+      background: #ffeef4;
       height: 100vh;
       margin: 0;
       overflow: hidden;
@@ -20,11 +20,10 @@
     }
 
     h1 {
-      font-size: 26px;
-      margin: 8px;
+      font-size: 28px;
+      margin: 10px;
     }
 
-    /* YES BUTTON — gradually enlarges */
     #yes {
       font-size: 18px;
       padding: 14px 30px;
@@ -38,15 +37,10 @@
     }
 
     @keyframes grow {
-      from {
-        transform: scale(1);
-      }
-      to {
-        transform: scale(1.3);
-      }
+      from { transform: scale(1); }
+      to   { transform: scale(1.3); }
     }
 
-    /* NO BUTTON — bouncing + rotating */
     #no {
       position: absolute;
       font-size: 16px;
@@ -66,42 +60,35 @@
     }
 
     @keyframes rotateSlow {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Hey <span>priyaaa</span> 💕</h1>
-  <h1>Will you be my Valentine?</h1>
+  <h1>Hey <span style="color:#ff4d6d;">HER NAME</span> 💕</h1>
+<h1>Will you be my Valentine?</h1>
 
   <button id="yes" onclick="yesClicked()">Yes</button>
   <button id="no" onclick="teleportNo()">No</button>
 
   <script>
     function yesClicked() {
-      document.body.innerHTML =
-        "<h1>i love youuu 💖</h1><p>Happy Valentine’s ❤️</p>";
+      document.body.innerHTML = `
+        <h1>me 🥰</h1>
+        <img src="giphy.gif" style="width:220px; margin-top:20px;">
+      `;
       document.body.style.background = "#ffd6e5";
     }
 
     function teleportNo() {
       const noBtn = document.getElementById("no");
-
       const maxX = window.innerWidth - noBtn.offsetWidth;
       const maxY = window.innerHeight - noBtn.offsetHeight;
-
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
-
-      noBtn.style.left = randomX + "px";
-      noBtn.style.top = randomY + "px";
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top  = Math.random() * maxY + "px";
     }
   </script>
 
