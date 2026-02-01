@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffeef4; /* light pink */
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 8px;
+    }
+
+    /* YES BUTTON — gradually enlarges */
+    #yes {
+      font-size: 18px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 14px;
+      background-color: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      animation: grow 8s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+
+    @keyframes grow {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.3);
+      }
+    }
+
+    /* NO BUTTON — bouncing + rotating */
+    #no {
+      position: absolute;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      background-color: #d9d9d9;
+      animation: moveAround 6s linear infinite, rotateSlow 4s linear infinite;
+    }
+
+    @keyframes moveAround {
+      0%   { top: 15%; left: 10%; }
+      25%  { top: 20%; left: 70%; }
+      50%  { top: 70%; left: 55%; }
+      75%  { top: 60%; left: 15%; }
+      100% { top: 15%; left: 10%; }
+    }
+
+    @keyframes rotateSlow {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Hey <span>priyaaa</span> 💕</h1>
+  <h1>Will you be my Valentine?</h1>
+
+  <button id="yes" onclick="yesClicked()">Yes</button>
+  <button id="no" onclick="teleportNo()">No</button>
+
+  <script>
+    function yesClicked() {
+      document.body.innerHTML =
+        "<h1>i love youuu 💖</h1><p>Happy Valentine’s ❤️</p>";
+      document.body.style.background = "#ffd6e5";
+    }
+
+    function teleportNo() {
+      const noBtn = document.getElementById("no");
+
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    }
+  </script>
+
+</body>
+</html>
